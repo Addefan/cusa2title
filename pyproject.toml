@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "cusa2title"
+version = "0.1.0"
+description = "Package to convert CUSA code to game еtitle"
+authors = ["Vitaly Zorin <addefan@mail.ru>"]
+license = "GPL-3.0-or-later"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.7"
+requests = "~2.31.0"
+coloreflection = "~0.1.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
