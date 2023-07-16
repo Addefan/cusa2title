@@ -1,4 +1,5 @@
 import requests
+from bs4 import BeautifulSoup
 from coloreflection import Color
 
 C = Color()
@@ -6,12 +7,12 @@ C = Color()
 
 def get_info_about_game_by_cusa(cusa):
     response = requests.get(f"https://orbispatches.com/en/CUSA{cusa}")
+    soup = BeautifulSoup(response.text, "html.parser")
 
-    if "Whoops, 404!" in response.text:
+    if soup.find("h3", string="Whoops, 404!"):
         return False
 
-    title = response.text.split("<title>")[-1].split("</title>")[0]
-    title = title.split(":", 1)[-1].split("|")[0].strip()
+    title = soup.find("h1", class_="bd-title").string
     return title
 
 
